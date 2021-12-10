@@ -51,7 +51,7 @@ HYP:<br>
     decimalPlace:<br>
         - 8<br>
         - 8<br>
-    updateFreq: 60
+    updateFreq: 60<br>
     discordBotKey: <Discord bot token><br>
     guildId: 385895423073714187<br>
 <br>
@@ -66,6 +66,7 @@ Run
 Deploy
 -----
 Once you are familiar with running a single sidebar bot, you can run multiple bots concurrently by calling `./bot.sh` and kill all bots by calling `./kill.sh`. You might want to modify the commands in `./bot.sh` to suit your own needs.
+
 -----
 [![Image of Crypto-city Logo](https://download.crypto-city.com/aw/cc.png)](https://www.crypto-city.com/)
 
