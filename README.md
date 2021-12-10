@@ -1,67 +1,74 @@
-# discord-sidebar-price-bot
-Inspired by [pipercucu/DiscordSidebarPriceBot](https://github.com/pipercucu/DiscordSidebarPriceBot),
-these Python scripts can run Discord bots that pull live data at intervals and display it on the sidebar of a Discord guild (i.e. server).
-It currently supports:
+[![Image of Element Logo](https://download.crypto-city.com/aw/github.gif)](https://www.crypto-city.com/element-hyp/info/)
 
-- **Cryptocurrency price** data (in USD, BTC, and/or ETH) from Coingecko API
-- **Gas price** of the Ethereum blockchain (in gwei) from Etherscan API
-- **Forex price** from exchangeratesapi
-- **Crypto Fear & Greed Index** from Alternate.me API
+# Element (HY) Discord Price Tracker Bot
+This bot will sit in the member list of the Discord server and display USD/BTC price of Element (HYP) and it's % movement over 24 hours. 
 
-## Dependencies
-Recommended `Python 3.7`, although it should support `Python >=3.5 <=3.9`. Install all dependencies:
-```
-pip install -r requirements.txt
-```
+Dependencies
+-----
 
-## Test & Run
-### Cryptocurrency Price Bot
-1. Cache the cryptocurrency ticker list from Coincegko by generating a *crypto_cache.json* file.
-```
-python crypto_cache.py -v
-```
+`Build a new blank Linux 18.04 (Bionic Beaver) Virtual Machine` <br>
+`Allow "Software Updater" to cycle through and update`<br>
+`sudo apt-get update && sudo apt-get upgrade && sudo apt install git`<br>
+`sudo apt install software-properties-common -y`<br>
+`sudo add-apt-repository ppa:deadsnakes/ppa`<br>
+`sudo apt install python3.7 -y`<br>
 
-2. Configure [crypto_config.yaml](crypto_config.yaml) using the template provided.
-It requires a unique Discord bot key and (non-unique) Guild ID per bot.
-1 sidebar bot per cryptocurrency (expressed by their ticker e.g. BTC, ETH, YFI). For each cryptocurrency, the price can be shown in USD, BTC, and/or ETH.
+Add Python 3.7 to the available alternatives
+-----
+`sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1`<br>
 
-3. Sometimes multiple coins or tokens share the same ticker (e.g. UNI). In this case, modify [resolver_ambiguous_ticker()](crypto_run.py#L20) to specify the token you want.
+Set python3.7 as the default python
+-----
+`sudo update-alternatives --set python /usr/bin/python3.7`<br>
 
-4. Run a cryptocurrency price bot:
-```
-python crypto_run.py -t BTC
-```
-Replace the ticker `BTC` with any cryptocurrency you have configured in Step 2.
+Install pip
+-----
+`sudo apt install python3-pip -y`<br>
+`sudo python -m pip install --upgrade pip`<br>
 
-### Gas Price Bot
-1. Configure [gas_config.yaml](gas_config.yaml) using the template provided.
-It requires a unique Discord bot key and (non-unique) Guild ID per bot.
-It also requires an Etherscan API key if you would like to use Etherscan API.
+Downloading repo
+-----
+`cd /home/username/`<br>
+`git clone https://github.com/anthonyrjwood/element_hyp_discord_price_bot.git`<br>
 
-2. Run a gas price bot using Etherscan API:
-```
-python gas_run.py -s etherscan
-```
+Additional Dependencies
+-----
+`pip install -r requirements.txt`<br>
 
-### Forex Price Bot
-1. Configure [forex_config.yaml](forex_config.yaml) using the template provided.
-It requires a unique Discord bot key and (non-unique) Guild ID per bot.
-1 sidebar bot per forex pair (expressed by their ticker/ticker e.g. GBP/HKD).
+Cache the CoinGecko cryptocurrency ticker list
+-----
+`cd /home/username/Desktop/lab/element_hyp_discord_price_bot`<br>
+`python crypto_cache.py -v`<br>
 
-2. Run a forex price bot:
-```
-python forex_run.py -p GBP/HKD
-```
-Replace `GBP/HKD` with any forex pair you have configured in Step 1.
+Configure crypto_config.yaml
+-----
+`nano crypto_config.yaml`
 
-### Crypto Fear & Greed Index
-1. Configure [cfgi_config.yaml](cfgi_config.yaml) using the template provided.
-It requires a unique Discord bot key and (non-unique) Guild ID per bot.
+HYP:<br>
+    priceUnit:<br>
+        - USD<br>
+        - BTC<br>
+    decimalPlace:<br>
+        - 8<br>
+        - 8<br>
+    updateFreq: 60
+    discordBotKey: <Discord bot token><br>
+    guildId: 385895423073714187<br>
+<br>
+`CTRL + X`<br>
+`y`<br>
+`ENTER`<br>
 
-2. Run a bot:
-```
-python cfgi_run.py
-```
+Run
+-----
+`python cfgi_run.py`
 
-## Deploy
+Deploy
+-----
 Once you are familiar with running a single sidebar bot, you can run multiple bots concurrently by calling `./bot.sh` and kill all bots by calling `./kill.sh`. You might want to modify the commands in `./bot.sh` to suit your own needs.
+-----
+[![Image of Crypto-city Logo](https://download.crypto-city.com/aw/cc.png)](https://www.crypto-city.com/)
+
+
+
+
